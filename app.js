@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 
 // Importamos rutas
-const TacoRouter = require("./routes/taco.routes");
+const ProductoRouter = require("./routes/producto.routes");
 //Variable que obtiene los valores del express
 const app = express();
 
@@ -17,6 +17,6 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 // Aqui van las rutas (Y AQUÍ FALTABA ESTO)
-app.use("/api/", TacoRouter);
+app.use("/api/", ProductoRouter);
 
 module.exports = app;
