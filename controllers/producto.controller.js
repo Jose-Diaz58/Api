@@ -22,15 +22,11 @@ class ProductoController {
 
     static actualizarProducto = async (req, res) => {
         try {
-            const id = req.params.id; 
-            const datosNuevos = req.body; 
-            
-            const productoActualizado = await Producto.findByIdAndUpdate(id, datosNuevos, { returnDocument: 'after' });
-            
-            if (!productoActualizado) {
-                return res.status(404).send({ message: "Producto no encontrado" });
-            }
-            res.status(200).json(productoActualizado);
+            const {id} = req.params;
+            const modProducto = req.body;
+
+            const modificar = await Producto.findByIdAndUpdate({_id:id}, modProducto)
+            res.status(200).send({message:"Datos Actualizados correctamente"}, modificar)
         } catch (error) {
             console.log(error);
             return res.status(400).send({ message: "Error al actualizar el producto" });
@@ -39,15 +35,10 @@ class ProductoController {
 
     static eliminarProducto = async (req, res) => {
         try {
-            const id = req.params.id; 
+            const {id} = req.params; 
             const productoEliminado = await Producto.findByIdAndDelete(id);
-            
-            if (!productoEliminado) {
-                return res.status(404).send({ message: "Producto no encontrado" });
-            }
-            res.status(200).json({ message: "Producto eliminado correctamente" });
+            res.status(200).json(productoEliminado)
         } catch (error) {
-            console.log(error);
             return res.status(400).send({ message: "Error al eliminar el producto" });
         }
     }

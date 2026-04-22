@@ -5,7 +5,7 @@ const api = express.Router();
 
 api.post("/producto/create", ProductoController.createProducto);
 api.get("/producto/buscar", ProductoController.obtenerDatos);
-api.patch("/producto/actualizar/:id", ProductoController.actualizarProducto);
+api.put("/producto/actualizar/:id", ProductoController.actualizarProducto);
 api.delete("/producto/eliminar/:id", ProductoController.eliminarProducto);
 
 module.exports = api;
