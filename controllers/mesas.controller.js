@@ -25,7 +25,7 @@ class MesaController {
     //atualizar
    static actualizarMesas = async (req, res) => {
     try {
-        const mesa = await Mesa.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const mesa = await Mesa.findByIdAndUpdate(req.params.id, req.body, { returnDocument: 'after' });
         res.status(200).json(mesa);
     } catch (error) {
         return res.status(400).send({ message: "Error de conexion" });
