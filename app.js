@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const ProductoRouter = require("./routes/producto.routes");
 const VentaRouter = require ("./routes/venta.routes")
 const MesasRouter=require("./routes/mesa.routes")
+const UsuarioRouter= require("./routes/usuario.routes")
 //Variable que obtiene los valores del express
 const app = express();
 
@@ -22,5 +23,6 @@ app.use(express.json());
 app.use("/api/", ProductoRouter);
 app.use("/api", VentaRouter)
 app.use("/api",MesasRouter)
+app.use("/api", UsuarioRouter)
 
 module.exports = app;
