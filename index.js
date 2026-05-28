@@ -1,18 +1,20 @@
 const mongoose = require("mongoose");
 const app = require ("./app");
-const {DB_NAME, DB_HOST}=require ("./constantes")
 
 const port = process.env.PORT || 4000;
 
-//Conexion al gestor de monngodb
-mongoose.connect(`mongodb://${DB_HOST}/${DB_NAME}`)
-.then(mongoose=>console.log("Conectado a MongoDB"))
-.catch(error=>console.log(error));
+const URI_NUBE = "mongodb+srv://BL4Z3:admintaco123@cluster0.qnafqwo.mongodb.netAdminTaco/?";
 
-//Aqui escucha al puerto el server de express
+const conexionDB = process.env.MONGO_URI || URI_NUBE;
+
+mongoose.connect(conexionDB)
+.then(() => console.log("¡Conectado a MongoDB Atlas en la nube! 🚀"))
+.catch(error => console.log("Error de conexión:", error));
+
+// Aqui escucha al puerto el server de express
 app.listen(port, ()=>{
     console.log("********************************")
     console.log("****En efecto, se ejecuta*******")
     console.log("********************************")
-    console.log(`http://localhost:${port}/api/`)
+    console.log(`API corriendo en el puerto: ${port}`)
 })

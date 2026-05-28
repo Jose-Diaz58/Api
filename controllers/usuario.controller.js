@@ -2,7 +2,7 @@ const Usuario = require("../models/usuario.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const SECRET_KEY = "mi_clave_super_secreta_admintaco_123";
+const SECRET_KEY = "admintaco1234";
 
 class UsuarioController {
     
